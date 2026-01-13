@@ -1,108 +1,137 @@
-<!-- 
-     Task: Turn this into a complete semantic page with:
-     - structured html
-     - a navigation top of page with links to integrative.html, semantic.html, table.html, form.html
-     - 3 images: logo, informational, decorative. Use the provided file names.
-     - “What’s New This Week” table with food types (Chef’s Choice/Vegan/Jain) and locations (KV, Student Union, Panda Express, WEB Cafe  )
-     - “Crowd Favorite” paragraph. Find a reason to use a strong tag and an em tag.
-     - “Menu Sighting Report” small form with labels + ids. Think about the inputs needed.
-     Do not use CSS. -->
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Campus Food Bulletin</title>
 </head>
+
 <body>
-<h1>Campus Food Bulletin</h1>
-<div>
-  <a href="/integrative.html">Home</a>
-  <a href="/semantic.html">Coffee Guide</a>
-  <a href="/table.html">Coffe Shop Hours</a>
-  <a href="/form.html">Submit a Review</a>
-</div>
+  <header>
+    <h1>Campus Food Bulletin</h1>
 
-<img src="logo.png">
+    <nav aria-label="Site">
+      <a href="/integrative.html" aria-current="page">Home</a>
+      <a href="/semantic.html">Coffee Guide</a>
+      <a href="/table.html">Coffee Shop Hours</a>
+      <a href="/form.html">Submit a Review</a>
+    </nav>
 
-<table>
-  <caption>What's New This Week</caption>
-  <thead>
-    <tr>
-      <th scope="col">Location</th>
-      <th scope="col">Chef’s Choice</th>
-      <th scope="col">Vegan</th>
-      <th scope="col">Jain</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">KV</th>
-      <td>Waffle Fries Mountain</td>
-      <td>Chickpea Bowl</td>
-      <td>Plain Rice + Cucumber</td>
-    </tr>
-    <tr>
-      <th scope="row">Student Union</th>
-      <td>Pretzel of Destiny</td>
-      <td>Veggie Wrap </td>
-      <td>Fruit Cup</td>
-    </tr>
-    <tr>
-      <th scope="row">Panda Express</th>
-      <td>Orange Chicken</td>
-      <td>Super Greens</td>
-      <td>Steamed Rice</td>
-    </tr>
-    <tr>
-      <th scope="row">WEB Cafe</th>
-      <td>Panini Surprise</td>
-      <td>Hummus Plate</td>
-      <td>Salad (no onion/garlic)</td>
-    </tr>
-  </tbody>
-</table>
+    <img src="logo.png" alt="Campus Food Bulletin logo">
+  </header>
 
-<h1>Crowd Favorite</h1>
+  <main>
+    <section aria-labelledby="new-this-week">
+      <h2 id="new-this-week">What’s New This Week</h2>
 
-<p><strong>Spicy Orange Chicken</strong></p>
- <p> <em>NEW in Panda Express</em></p>
-<img src="featured-meal.jpg">
-<img src="sparkle.png">
+      <table>
+        <caption>What’s New This Week</caption>
+        <thead>
+          <tr>
+            <th scope="col">Location</th>
+            <th scope="col">Chef’s Choice</th>
+            <th scope="col">Vegan</th>
+            <th scope="col">Jain</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">KV</th>
+            <td>Waffle Fries Mountain</td>
+            <td>Chickpea Bowl</td>
+            <td>Plain Rice + Cucumber</td>
+          </tr>
+          <tr>
+            <th scope="row">Student Union</th>
+            <td>Pretzel of Destiny</td>
+            <td>Veggie Wrap</td>
+            <td>Fruit Cup</td>
+          </tr>
+          <tr>
+            <th scope="row">Panda Express</th>
+            <td>Orange Chicken</td>
+            <td>Super Greens</td>
+            <td>Steamed Rice</td>
+          </tr>
+          <tr>
+            <th scope="row">WEB Cafe</th>
+            <td>Panini Surprise</td>
+            <td>Hummus Plate</td>
+            <td>Salad (no onion/garlic)</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
 
-<form>
-  <p>Menu Sighting Report</p>
-  <p>
-    Locations:
-    <select>
-      <option>KV</option>
-      <option>Student Union</option>
-      <option>Panda Express</option>
-      <option>WEB Cafe</option>
-    </select>
-  </p>
-  <p>
-    <textarea placeholder="What did you see?"></textarea></p>
-  <p>
-    Category:
-    <select>
-      <option>Chef's Choice</option>
-      <option>Vegan</option>
-      <option>Jain</option>
-      <option>Unknown</option>
-    </select>
-  </p>
-  <p>
-    What dish did you see:
-    <textarea></textarea></p>
-  <p>
-    <p>
-      Notes:
-      <textarea></textarea></p>
-    <p>
-       <input type="button" value="Submit">
-    </p>
-</form>
+    <article aria-labelledby="crowd-favorite">
+      <h2 id="crowd-favorite">Crowd Favorite</h2>
 
-<footer> © 2026 Campus Food Bulletin </footer>
+      <p>
+        This week’s top pick is <strong>Spicy Orange Chicken</strong>,
+        and it is <em>back for a limited time</em> at Panda Express.
+      </p>
 
+      <img src="featured-meal.jpg" alt="Featured meal: Spicy Orange Chicken">
+      <img src="sparkle.png" alt="Decorative sparkle icon">
+    </article>
+
+    <section aria-labelledby="report">
+      <h2 id="report">Menu Sighting Report</h2>
+
+      <form action="#" method="post">
+        <p>
+          <label for="report-location">Location:</label>
+          <select id="report-location" name="location" required>
+            <option value="" selected disabled>Choose a location</option>
+            <option value="kv">KV</option>
+            <option value="student-union">Student Union</option>
+            <option value="panda-express">Panda Express</option>
+            <option value="web-cafe">WEB Cafe</option>
+          </select>
+        </p>
+
+        <fieldset>
+          <legend>Category:</legend>
+          <p>
+            <input id="cat-chef" name="category" type="radio" value="chef-choice" required>
+            <label for="cat-chef">Chef’s Choice</label>
+          </p>
+          <p>
+            <input id="cat-vegan" name="category" type="radio" value="vegan">
+            <label for="cat-vegan">Vegan</label>
+          </p>
+          <p>
+            <input id="cat-jain" name="category" type="radio" value="jain">
+            <label for="cat-jain">Jain</label>
+          </p>
+          <p>
+            <input id="cat-unknown" name="category" type="radio" value="unknown">
+            <label for="cat-unknown">Unknown</label>
+          </p>
+        </fieldset>
+
+        <p>
+          <label for="dish-seen">What dish did you see?</label>
+          <input id="dish-seen" name="dish" type="text" required>
+        </p>
+
+        <p>
+          <label for="details">What did you see?</label>
+          <textarea id="details" name="details" rows="4"></textarea>
+        </p>
+
+        <p>
+          <label for="notes">Notes:</label>
+          <textarea id="notes" name="notes" rows="3"></textarea>
+        </p>
+
+        <p>
+          <button type="submit">Submit</button>
+        </p>
+      </form>
+    </section>
+  </main>
+
+  <footer>© 2026 Campus Food Bulletin</footer>
 </body>
 </html>
