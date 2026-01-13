@@ -7,58 +7,91 @@
 </head>
 <body>
 
-<h1>Campus Food Review</h1>
-<div>
-  <a href="/integrative.html">Home</a>
-  <a href="/semantic.html">Coffee Guide</a>
-  <a href="/table.html">Coffe Shop Hours</a>
-  <a href="/form.html">Submit a Review</a>
-</div>
-<p>Help improve campus dining by submitting an honest review.</p>
+<header>
+  <h1>Campus Food Review</h1>
 
-<form>
-  <p>
-    Location:
-    <select>
-      <option>KV</option>
-      <option>Student Union</option>
-      <option>Panda Express</option>
-      <option>WEB Cafe</option>
-    </select>
-  </p>
+  <nav aria-label="Site">
+    <a href="/integrative.html">Home</a>
+    <a href="/semantic.html">Coffee Guide</a>
+    <a href="/table.html">Coffee Shop Hours</a>
+    <a href="/form.html" aria-current="page">Submit a Review</a>
+  </nav>
 
-  <p>
-    <input type="text" placeholder="Dish name">
-  </p>
+  <p>Help improve campus dining by submitting an honest review.</p>
+</header>
 
-  <p>
-    Food quality:
-    <input type="radio"> Elite
-    <input type="radio"> Good-ish
-    <input type="radio"> Meh
-    <input type="radio"> Sus
-    <input type="radio"> Legendary Regret
-  </p>
+<main>
+  <form action="#" method="post">
+    <p>
+      <label for="location">Location:</label>
+      <select id="location" name="location" required>
+        <option value="" selected disabled>Choose a location</option>
+        <option value="kv">KV</option>
+        <option value="student-union">Student Union</option>
+        <option value="panda-express">Panda Express</option>
+        <option value="web-cafe">WEB Cafe</option>
+      </select>
+    </p>
 
-  <p>
-    Portion size:
-    <select>
-      <option>Tiny</option>
-      <option>Reasonable</option>
-      <option>Could feed a small village</option>
-    </select>
-  </p>
+    <p>
+      <label for="dish">Dish name:</label>
+      <input id="dish" name="dish" type="text" required />
+    </p>
 
-  <p>
-    <input type="checkbox"> I survived this meal
-  </p>
+    <fieldset>
+      <legend>Food quality:</legend>
 
-  <p>
-    <textarea placeholder="Comments"></textarea>
-  </p>
+      <p>
+        <input id="q-elite" name="quality" type="radio" value="elite" required />
+        <label for="q-elite">Elite</label>
+      </p>
 
-  <p><input type="submit"></p>
-</form>
+      <p>
+        <input id="q-goodish" name="quality" type="radio" value="good-ish" />
+        <label for="q-goodish">Good-ish</label>
+      </p>
+
+      <p>
+        <input id="q-meh" name="quality" type="radio" value="meh" />
+        <label for="q-meh">Meh</label>
+      </p>
+
+      <p>
+        <input id="q-sus" name="quality" type="radio" value="sus" />
+        <label for="q-sus">Sus</label>
+      </p>
+
+      <p>
+        <input id="q-regret" name="quality" type="radio" value="legendary-regret" />
+        <label for="q-regret">Legendary Regret</label>
+      </p>
+    </fieldset>
+
+    <p>
+      <label for="portion">Portion size:</label>
+      <select id="portion" name="portion">
+        <option value="" selected>Choose one (optional)</option>
+        <option value="tiny">Tiny</option>
+        <option value="reasonable">Reasonable</option>
+        <option value="village">Could feed a small village</option>
+      </select>
+    </p>
+
+    <p>
+      <input id="survived" name="survived" type="checkbox" value="yes" />
+      <label for="survived">I survived this meal</label>
+    </p>
+
+    <p>
+      <label for="comments">Comments:</label>
+      <textarea id="comments" name="comments" rows="5"></textarea>
+    </p>
+
+    <p>
+      <button type="submit">Submit review</button>
+    </p>
+  </form>
+</main>
 
 </body>
 </html>
