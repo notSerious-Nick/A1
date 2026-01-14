@@ -11,10 +11,12 @@
     <h1>Campus Food Bulletin</h1>
 
     <nav aria-label="Site">
-      <ul><a href="/integrative.html" aria-current="page">Home</a></ul>
-      <ul><a href="/semantic.html">Coffee Guide</a></ul>
-      <ul><a href="/table.html">Coffee Shop Hours</a></ul>
-      <ul><a href="/form.html">Submit a Review</a></ul>
+      <ul>
+        <li><a href="/integrative.html" aria-current="page">Home</a></li>
+        <li><a href="/semantic.html">Coffee Guide</a></li>
+        <li><a href="/table.html">Coffee Shop Hours</a></li>
+        <li><a href="/form.html">Submit a Review</a></li>
+      </ul>
     </nav>
 
     <img src="logo.png" alt="Campus Food Bulletin logo">
@@ -72,7 +74,7 @@
       </p>
 
       <img src="featured-meal.jpg" alt="Featured meal: Spicy Orange Chicken">
-      <img src="sparkle.png" alt="decorative">
+      <img src="sparkle.png" alt="">
     </article>
 
     <section aria-labelledby="report">
@@ -90,25 +92,16 @@
           </select>
         </p>
 
-        <fieldset>
-          <legend>Category:</legend>
-          <p>
-            <input id="cat-chef" name="category" type="radio" value="chef-choice" required>
-            <label for="cat-chef">Chef’s Choice</label>
-          </p>
-          <p>
-            <input id="cat-vegan" name="category" type="radio" value="vegan">
-            <label for="cat-vegan">Vegan</label>
-          </p>
-          <p>
-            <input id="cat-jain" name="category" type="radio" value="jain">
-            <label for="cat-jain">Jain</label>
-          </p>
-          <p>
-            <input id="cat-unknown" name="category" type="radio" value="unknown">
-            <label for="cat-unknown">Unknown</label>
-          </p>
-        </fieldset>
+        <p>
+          <label for="category">Category:</label>
+          <select id="category" name="category" required>
+            <option value="" selected disabled>Choose a category</option>
+            <option value="chef-choice">Chef's Choice</option>
+            <option value="vegan">Vegan</option>
+            <option value="jain">Jain</option>
+            <option value="unknown">Unknown</option>
+          </select>
+        </p>
 
         <p>
           <label for="dish-seen">What dish did you see?</label>
