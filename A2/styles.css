@@ -1,0 +1,89 @@
+/* Week 2 CSS Practice
+   Your goal: use a mix of selectors:
+   - Tag selectors (h1, h2, p, etc.)
+   - Class selectors (.club, .tagline, etc.)
+   - Descendant selectors (.club .label, nav a, etc.)
+   - Combined selectors (.club.featured, nav a.active, etc.)
+   - Grouping selectors (h2, h3)
+   - Pseudo-selector (:hover)
+   - :required
+*/
+
+/* 1) Tag selector: set a font-family on the whole page (body tag) */
+body{
+   font-family:'Courier New', Courier, monospace;
+}
+/* 2) Grouping selector: make h2 and h3 use a lighter font-weight with one rule */
+h2, h3{
+   font-weight: lighter;
+}
+/* 3) Tag selector: center the main page title (h1) */
+h1{
+   text-align: center;
+}
+/* 4) Class selector: style the tagline (center + gray) */
+.tagline{
+   text-align: center;
+   color: gray;
+}
+/* 5) Descendant (nested) selector: style links in the nav (bold, no underline, black) */
+nav ul li a{
+   font-weight: bold;
+   text-decoration: none;
+   color: black;
+}
+/* 6) Pseudo-selector: underline nav links on hover */
+nav ul li a:hover{
+   text-decoration: underline;
+}
+/* 7) Combined selector: style the active nav link (with an "active" class) with dark green font */
+nav a.active {
+   color: darkgreen;
+}
+/* 8) Class selector: style club “cards” using border + padding + margin */
+.club{
+   border: 2px solid black;
+   padding: 1px;
+   margin: 2px;
+}
+/* 9) Combined selector: make featured clubs stand out with thicker border */
+.club.featured{
+   border-width: thick;
+}
+/* 10) Combined selector: give active clubs a light green background */
+.club.active{
+   background-color: lightgreen;
+}
+/* 11) Combined selector: give inactive clubs a light red background */
+.club.inactive{
+   background-color: rgba(255, 0, 0, 0.522);
+}
+/* 12) Class selector: give summary paragraphs a little margin */
+.summary{
+   margin: 2px;
+}
+/* 13) Class selector: give status lines a little margin */
+.status{
+   margin: 2px;
+}
+/* 14) Descendant selector: make labels inside clubs bold */
+.club .label{
+   font-weight: bold;
+}
+/* 15) Class selector: add some space around the signup section */
+.signup{
+   margin: 5px;
+   padding: 5px;
+}
+/* 16) Class selector: make hint text gray */
+.hint{
+   color: gray;
+}
+/* 17) Class selector: make the submit button text bold with the action class */
+input.action{
+   font-weight: bold;
+}
+/* 18) pseudo-selector: make :required inputs visually obvious (thicker border) */
+input:required{
+   border: 2px solid black;
+}

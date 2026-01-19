@@ -1,0 +1,21 @@
+.italic{
+    font-style: italic;
+}
+.text-center{
+    text-align: center;
+}
+table{
+    border-collapse: collapse;
+}
+td, th{
+    border: 1px solid black;
+}
+.gray-background{
+    background-color: gray;
+}
+.feature{
+    background-color: blue;
+}
+tbody tr:hover {
+    background-color: yellow;
+}

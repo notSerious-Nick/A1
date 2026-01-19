@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Campus Clubs</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+
+  <body>
+    <header>
+      <h1>Campus Clubs</h1>
+      <p class="tagline">Find a club. Meet people. Learn something weird.</p>
+
+      <nav aria-label="Main navigation">
+        <ul>
+          <li><a class="active" href="#">Clubs</a></li>
+          <li><a href="#">Events</a></li>
+          <li><a href="#">Join</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section>
+        <h2>Featured This Week</h2>
+
+        <article class="club featured active">
+          <h3>Midnight Snack Society</h3>
+          <p class="summary">
+            We review late-night snacks with the seriousness they deserve.
+          </p>
+
+          <p>
+            <span class="label">Meeting:</span> Thursdays, 9pm
+            <span class="label">Location:</span> Student Union (north lounge)
+          </p>
+
+          <p class="status">Status: Open to new members</p>
+        </article>
+
+        <article class="club featured inactive">
+          <h3>Campus Oven Wizards</h3>
+          <p class="summary">
+            Baking experiments, questionable frosting decisions, big outcomes.
+          </p>
+
+          <p>
+            <span class="label">Meeting:</span> Mondays, 6pm
+            <span class="label">Location:</span> KV kitchen classroom
+          </p>
+
+          <p class="status">Status: Paused (equipment repair week)</p>
+        </article>
+      </section>
+
+      <section>
+        <h2>All Clubs</h2>
+
+        <article class="club active">
+          <h3>Ultimate Frisbee Club</h3>
+          <p class="summary">
+            Friendly games, occasional tournaments, and a lot of sprinting for plastic.
+          </p>
+
+          <p>
+            <span class="label">Meeting:</span> Tuesdays, 5pm
+            <span class="label">Location:</span> Main quad
+          </p>
+
+          <p class="status">Status: Active</p>
+        </article>
+
+        <article class="club active">
+          <h3>Cat Appreciation Club</h3>
+          <p class="summary">
+            We share cat stories, swap photos, and host “pet a cat” study breaks.
+          </p>
+
+          <p>
+            <span class="label">Meeting:</span> Wednesdays, 7pm
+            <span class="label">Location:</span> Library courtyard
+          </p>
+
+          <p class="status">Status: Active</p>
+        </article>
+
+        <article class="club inactive">
+          <h3>Board Game Basement League</h3>
+          <p class="summary">
+            Strategy games, chaotic party games, and debates about the rules.
+          </p>
+
+          <p>
+            <span class="label">Meeting:</span> Fridays, 6pm
+            <span class="label">Location:</span> Student Union (room 210)
+          </p>
+
+          <p class="status">Status: Inactive until midterms</p>
+        </article>
+      </section>
+
+      <section class="signup">
+        <h2>Join the Mailing List</h2>
+        <p class="hint">We’ll email you a weekly roundup. No spam. Mostly.</p>
+
+        <form>
+          <p>
+            <label for="name">Name</label><br />
+            <input id="name" type="text" required />
+          </p>
+
+          <p>
+            <label for="email">Email</label><br />
+            <input id="email" type="email" required />
+          </p>
+
+          <p>
+            <label for="interest">What are you interested in?</label><br />
+            <select id="interest">
+              <option>Sports</option>
+              <option>Pets</option>
+              <option>Food</option>
+              <option>Games</option>
+              <option>Science</option>
+            </select>
+          </p>
+
+          <p>
+            <label for="note">One sentence about you</label><br />
+            <textarea id="note" rows="3"></textarea>
+          </p>
+
+          <p>
+            <input class="action" type="submit" value="Sign me up" />
+          </p>
+        </form>
+      </section>
+    </main>
+
+    <footer>
+      <p>© 2026 Campus Clubs Directory</p>
+    </footer>
+  </body>
+</html>
