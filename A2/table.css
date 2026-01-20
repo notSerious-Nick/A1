@@ -19,6 +19,6 @@ thead{
 tbody tr:hover {
     background-color: yellow;
 }
-tbody td:first-child {
+.right-aligned {
     text-align: right;
 }
