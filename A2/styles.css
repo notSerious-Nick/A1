@@ -27,13 +27,13 @@ h1{
    color: gray;
 }
 /* 5) Descendant (nested) selector: style links in the nav (bold, no underline, black) */
-nav ul li a{
+nav a{
    text-decoration: none;
    font-weight: bold;
    color: black;
 }
 /* 6) Pseudo-selector: underline nav links on hover */
-nav ul li a:hover{
+nav a:hover{
    text-decoration: underline;
 }
 /* 7) Combined selector: style the active nav link (with an "active" class) with dark green font */
