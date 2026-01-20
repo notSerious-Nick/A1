@@ -19,6 +19,7 @@ thead{
 tbody tr:hover {
     background-color: yellow;
 }
-.right-aligned {
-    text-align: right;
+tbody th:first-child,
+tbody td:first-child {
+  text-align: right;
 }
