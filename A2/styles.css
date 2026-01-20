@@ -28,8 +28,8 @@ h1{
 }
 /* 5) Descendant (nested) selector: style links in the nav (bold, no underline, black) */
 nav ul li a{
-   font-weight: bold;
    text-decoration: none;
+   font-weight: bold;
    color: black;
 }
 /* 6) Pseudo-selector: underline nav links on hover */
