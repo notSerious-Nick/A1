@@ -21,7 +21,7 @@ body {
 /* ---------- Header ---------- */
 
 .topbar {
-  padding: 1rem;
+  gap: 1rem;
   background: white;
   border-bottom: 1px solid #ccc;
 
