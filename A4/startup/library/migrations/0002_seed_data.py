@@ -3,56 +3,39 @@ from django.utils import timezone
 from django.utils.dateparse import parse_datetime
 
 def forwards(apps, schema_editor):
-    Venue = apps.get_model("conferences", "Venue")
-    Event = apps.get_model("conferences", "Event")
-    Registration = apps.get_model("conferences", "Registration")
+    Author = apps.get_model("library", "Author")
+    Book = apps.get_model("library", "Book")
+    Loan = apps.get_model("library", "Loan")
 
-    v, _ = Venue.objects.get_or_create(
-        name="Main Hall",
-        defaults={"capacity": 300},
+    a, _ = Author.objects.get_or_create(name="Jane Doe", defaults={"birth_year": 1980})
+
+    b1, _ = Book.objects.get_or_create(
+        isbn="ISBN-ALPHA-001",
+        defaults={"author": a, "title": "Alpha", "published_year": 2010},
+    )
+    b2, _ = Book.objects.get_or_create(
+        isbn="ISBN-BETA-002",
+        defaults={"author": a, "title": "Beta", "published_year": 2012},
     )
 
-    e1, _ = Event.objects.get_or_create(
-        title="Tech Talk",
-        starts_at=timezone.make_aware(parse_datetime("2026-02-10 18:00")),
-        defaults={"venue": v, "is_cancelled": False},
+    Loan.objects.get_or_create(
+        book=b1,
+        borrower_name="Nick",
+        checked_out_at=timezone.make_aware(parse_datetime("2026-02-04 10:00")),
+        due_at=timezone.make_aware(parse_datetime("2026-02-18 10:00")),
+        defaults={"returned": True},
     )
-
-    e2, _ = Event.objects.get_or_create(
-        title="Cancelled Meetup",
-        starts_at=timezone.make_aware(parse_datetime("2026-02-11 18:00")),
-        defaults={"venue": v, "is_cancelled": True},
-    )
-
-    Registration.objects.get_or_create(
-        event=e1,
-        attendee_email="a@example.com",
-        registered_at=timezone.make_aware(parse_datetime("2026-02-04 09:00")),
-        defaults={"checked_in": False},
-    )
-
-    Registration.objects.get_or_create(
-        event=e1,
-        attendee_email="b@example.com",
-        registered_at=timezone.make_aware(parse_datetime("2026-02-04 09:05")),
-        defaults={"checked_in": True},
-    )
-
-    Registration.objects.get_or_create(
-        event=e2,
-        attendee_email="c@example.com",
-        registered_at=timezone.make_aware(parse_datetime("2026-02-04 09:10")),
-        defaults={"checked_in": False},
+    Loan.objects.get_or_create(
+        book=b2,
+        borrower_name="Sam",
+        checked_out_at=timezone.make_aware(parse_datetime("2026-02-04 11:00")),
+        due_at=timezone.make_aware(parse_datetime("2026-02-18 11:00")),
+        defaults={"returned": False},
     )
 
 def backwards(apps, schema_editor):
     pass
 
 class Migration(migrations.Migration):
-    dependencies = [
-        ("library", "0001_initial"),
-    ]
-
-    operations = [
-        migrations.RunPython(forwards, backwards),
-    ]
+    dependencies = [("library", "0001_initial")]
+    operations = [migrations.RunPython(forwards, backwards)]
