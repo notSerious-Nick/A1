@@ -24,10 +24,8 @@ body {
   gap: 1rem;
   background: white;
   border-bottom: 1px solid #ccc;
-
   display: flex;
   flex-direction: column;
-  
   padding: 0.4rem;
   
 }
