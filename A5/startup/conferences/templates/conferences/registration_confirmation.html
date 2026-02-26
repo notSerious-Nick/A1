@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Registration Confirmed</title>
+</head>
+<body>
+  <h1>Registration confirmed</h1>
+
+  <p>
+    Registered <strong>{{ registration.attendee_email }}</strong>
+    for <strong>{{ event.title }}</strong>.
+  </p>
+
+  <p>Checked in: {{ registration.checked_in }}</p>
+
+  <p><a href="{% url 'event_list' %}">Back to event list</a></p>
+</body>
+</html>

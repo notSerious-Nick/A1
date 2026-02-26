@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Register for Event</title>
+</head>
+<body>
+
+  <h1>Event Registration</h1>
+
+  {% if errors %}
+    <ul style="color: red;">
+      {% for e in errors %}
+        <li>{{ e }}</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+
+  <!-- A form without an action submits back to the same url -->
+  <form method="post">
+    {% csrf_token %}
+
+    <div>
+      <label for="event_id">Event ID:</label>
+      <input
+        id="event_id"
+        type="number"
+        name="event_id"
+        min="1"
+        required
+        value="{{ event_id }}"
+      >
+    </div>
+
+    <div>
+      <label for="attendee_email">Email:</label>
+      <input
+        id="attendee_email"
+        type="email"
+        name="attendee_email"
+        required
+        value="{{ attendee_email }}"
+      >
+    </div>
+
+    <div>
+      <input
+        type="checkbox"
+        id="checked_in"
+        name="checked_in"
+        {% if checked_in %}checked{% endif %}
+      >
+      <label for="checked_in">Checked in</label>
+    </div>
+
+    <button type="submit">Register</button>
+  </form>
+
+</body>
+</html>

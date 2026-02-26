@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Events</title>
+</head>
+<body>
+
+  <h1>Events</h1>
+
+  <!-- Filter form (GET) -->
+  <form method="get">
+    <label>
+      <input
+        type="checkbox"
+        name="show_cancelled"
+        {% if show_cancelled %}checked{% endif %}
+      >
+      Show cancelled events
+    </label>
+    <button type="submit">Apply</button>
+  </form>
+
+  <hr>
+
+  <!-- Display events -->
+  {% if events %}
+    <ul>
+      {% for event in events %}
+        <li>
+          <strong>{{ event.title }}</strong>
+          — {{ event.starts_at }}
+
+          {% if event.is_cancelled %}
+            <span style="color:red;">(CANCELLED)</span>
+          {% endif %}
+
+          <br>
+          Venue:
+          {% if event.venue %}
+            {{ event.venue.name }}
+          {% else %}
+            No venue assigned
+          {% endif %}
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>No events found.</p>
+  {% endif %}
+
+</body>
+</html>
