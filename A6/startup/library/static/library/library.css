@@ -1,0 +1,51 @@
+/* Base layout */
+body {
+  font-family: system-ui, -apple-system, Arial, sans-serif;
+  margin: 24px;
+  line-height: 1.5;
+}
+
+/* Links */
+a {
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+/* Tables */
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-top: 12px;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: left;
+}
+
+th {
+  font-weight: 600;
+}
+
+/* Buttons */
+button {
+  padding: 8px 12px;
+  border: 1px solid #999;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+button:hover {
+  filter: brightness(0.95);
+}
+
+/* Errors */
+.error {
+  padding: 10px 12px;
+  border: 1px solid #cc6666;
+  border-radius: 6px;
+  margin: 10px 0;
+}

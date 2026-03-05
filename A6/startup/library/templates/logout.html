@@ -1,0 +1,11 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'library/library.css' %}">
+
+<h1>Log out</h1>
+
+<form method="post">
+  {% csrf_token %}
+  <button type="submit">Log out</button>
+</form>
+
+<p><a href="{% url 'books' %}">Cancel</a></p>

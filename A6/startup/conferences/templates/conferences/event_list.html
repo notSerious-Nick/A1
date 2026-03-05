@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Events</title>
+</head>
+<body>
+
+  <h1>Events</h1>
+
+  <!-- =========================================================
+       TODO: Filter form (GET)
+
+       Create a filter form that controls whether cancelled events
+       are included in the list.
+
+       Requirements:
+         1) Use method="get"
+         2) Include a checkbox named "show_cancelled"
+         3) The checkbox should stay checked after submit if it was checked
+       ========================================================= -->
+
+  <!-- =========================
+       SOLUTION (remove for student)
+       ========================= -->
+  <form method="get">
+    <label>
+      <input
+        type="checkbox"
+        name="show_cancelled"
+        {% if request.GET.show_cancelled %}checked{% endif %}
+      >
+      Show cancelled events
+    </label>
+
+    <button type="submit">Apply</button>
+  </form>
+  <!-- ===== END SOLUTION ===== -->
+
+  <hr>
+
+  <!-- =========================================================
+       TODO: Display events with template control flow
+
+       Requirements:
+         1) If there are events:
+              - loop over them using Django template for loops
+              - show title and starts_at
+              - if event.is_cancelled is true, show a clear "CANCELLED" indicator
+              - show venue name if event.venue exists, otherwise show "No venue assigned"
+         2) If there are no events:
+              - show "No events found."
+       ========================================================= -->
+
+  <!-- =========================
+       SOLUTION (remove for student)
+       ========================= -->
+  {% if events %}
+    <ul>
+      {% for event in events %}
+        <li>
+          <strong>{{ event.title }}</strong><br>
+          Starts at: {{ event.starts_at }}<br>
+
+          {% if event.is_cancelled %}
+            <em>CANCELLED</em><br>
+          {% endif %}
+
+          {% if event.venue %}
+            Venue: {{ event.venue.name }}
+          {% else %}
+            No venue assigned
+          {% endif %}
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>No events found.</p>
+  {% endif %}
+  <!-- ===== END SOLUTION ===== -->
+
+</body>
+</html>

@@ -1,0 +1,35 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'library/library.css' %}">
+<nav>
+  | <a href="{% url 'books' %}">All books</a>
+  | <a href="{% url 'librarian' %}">Librarian</a>
+  {% if user.is_authenticated %}
+    | <span>{{ user.username }}</span>
+    | <a href="{% url 'logout' %}">Logout</a>
+  {% else %}
+    | <a href="{% url 'login' %}">Login</a>
+  {% endif %}
+</nav>
+
+
+<h1>Librarian Dashboard</h1>
+
+<table>
+  <tr><th>Book</th><th>Borrower</th><th>Due</th><th></th></tr>
+  {% for loan in loans %}
+    <tr>
+      <td>{{ loan.book.title }}</td>
+      <td>{{ loan.borrower_name }}</td>
+      <td>{{ loan.due_at }}</td>
+      <td>
+        <form method="post">
+          {% csrf_token %}
+          <input type="hidden" name="loan_id" value="{{ loan.id }}">
+          <button type="submit">Mark returned</button>
+        </form>
+      </td>
+    </tr>
+  {% empty %}
+    <tr><td colspan="4">No open loans.</td></tr>
+  {% endfor %}
+</table>
