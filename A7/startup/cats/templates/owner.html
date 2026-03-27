@@ -1,0 +1,20 @@
+<main>
+  <h1>Owner {{owner.name}}</h1>
+
+  <h2>Cats</h2>
+  <ul>
+    {% for cat in cats %}
+    <li>{{cat.name}}</li>
+    {% endfor %}
+  </ul>
+  <p> Done by template</p>
+
+  {% if user.is_authenticated %}
+    <form method="post" action="{% url 'logout' %}">
+        {% csrf_token %}
+        <button type="submit">Logout</button>
+    </form>
+  {% else %}
+    <a href="{% url 'login' %}">Sign In</a>
+  {% endif %}
+</main>

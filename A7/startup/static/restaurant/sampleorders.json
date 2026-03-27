@@ -1,0 +1,7 @@
+{
+  "orders": [
+    { "id": 1, "item": "Nachos", "table_number": 12, "status": "PLACED" },
+    { "id": 2, "item": "Bao", "table_number": 7, "status": "PLACED" },
+    { "id": 3, "item": "Salad", "table_number": 4, "status": "DELIVERED" }
+  ]
+}

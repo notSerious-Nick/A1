@@ -1,0 +1,65 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Restaurant Dashboard</title>
+    <link rel="stylesheet" href="{% static 'restaurant/dashboard.css' %}" />
+    <script src="{% static 'restaurant/dashboard.js' %}" defer></script>
+  </head>
+  <body>
+    <h1>Restaurant Dashboard</h1>
+
+    <section>
+      <button id="simulate-order-btn">Simulate Order Alert</button>
+      <p id="notification"></p>
+    </section>
+
+    <section class="lists-area">
+      <div>
+        <h2>Unassigned Orders</h2>
+        <ul id="unassigned-orders">
+          <li>Table 12 - Nachos</li>
+          <li>Table 7 - Bao</li>
+          <li>Table 4 - Salad</li>
+        </ul>
+      </div>
+
+      <div>
+        <h2>My Orders</h2>
+        <ul id="my-orders"></ul>
+      </div>
+    </section>
+
+    <section>
+      <h2>Filter Order Cards</h2>
+      <label for="filter-text">Search by item name:</label>
+      <input id="filter-text" type="text" placeholder="Type to filter" />
+
+      <div id="card-area">
+        <div class="order-card">
+          <h3 class="item-name">Nachos</h3>
+          <p>Table 12</p>
+          <p>Status: PLACED</p>
+        </div>
+        <div class="order-card">
+          <h3 class="item-name">Beans</h3>
+          <p>Table 12</p>
+          <p>Status: DELIVERED</p>
+        </div>
+        <div class="order-card">
+          <h3 class="item-name">Bao</h3>
+          <p>Table 7</p>
+          <p>Status: PLACED</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Load Orders from Server</h2>
+      <button id="load-orders-btn">Load Orders</button>
+      <p id="fetch-error" class="error"></p>
+      <div id="fetched-orders"></div>
+    </section>
+  </body>
+</html>

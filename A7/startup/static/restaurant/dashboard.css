@@ -1,0 +1,46 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 24px;
+}
+
+#notification {
+  min-height: 1.5em;
+}
+
+.lists-area {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+ul {
+  border: 1px solid black;
+  width: 250px;
+  min-height: 120px;
+  padding: 16px;
+  list-style: none;
+}
+li {
+  margin: 8px 0;
+}
+
+li:hover {
+  background-color: lightgray;
+  cursor: pointer;
+}
+
+.order-card {
+  border: 1px solid black;
+  padding: 16px;
+  margin: 12px 0;
+  width: 300px;
+}
+
+.hidden {
+  display: none;
+}
+
+.error {
+  color: red;
+  font-weight: bold;
+}

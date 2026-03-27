@@ -1,0 +1,54 @@
+[
+  {
+    "model": "restaurant.order",
+    "pk": 1,
+    "fields": {
+      "customer": null,
+      "customer_name": "Alex Rivera",
+      "waiter": null,
+      "table_number": 12,
+      "item": "Nachos",
+      "placed_at": "2026-03-01T18:00:00Z",
+      "status": "PLACED"
+    }
+  },
+  {
+    "model": "restaurant.order",
+    "pk": 2,
+    "fields": {
+      "customer": null,
+      "customer_name": "Blair Chen",
+      "waiter": null,
+      "table_number": 7,
+      "item": "Bao",
+      "placed_at": "2026-03-01T18:05:00Z",
+      "status": "PLACED"
+    }
+  },
+  {
+    "model": "restaurant.order",
+    "pk": 3,
+    "fields": {
+      "customer": null,
+      "customer_name": "Alex Rivera",
+      "waiter": null,
+      "table_number": 4,
+      "item": "Salad",
+      "placed_at": "2026-03-01T18:08:00Z",
+      "status": "DELIVERED"
+    }
+  },
+  {
+    "model": "restaurant.order",
+    "pk": 4,
+    "fields": {
+      "customer": null,
+      "customer_name": "Jamie Park",
+      "waiter": null,
+      "table_number": 9,
+      "item": "Fries",
+      "placed_at": "2026-03-01T18:10:00Z",
+      "status": "PLACED"
+    }
+  }
+]

@@ -1,0 +1,19 @@
+<form method="post">
+  {% csrf_token %}
+
+  <label>
+    Username:
+    <input name="username">
+  </label>
+
+  <label>
+    Password:
+    <input type="password" name="password">
+  </label>
+
+  <button type="submit">Log in</button>
+
+  {% if error %}
+    <p class="error">{{ error }}</p>
+  {% endif %}
+</form>

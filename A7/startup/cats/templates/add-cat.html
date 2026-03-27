@@ -1,0 +1,22 @@
+
+<form action="/cats/add-cat/" method="post">
+{% csrf_token %}
+
+<p>
+  <label for="catname">Cat name:</label>
+  <input id="catname" name="catname">
+</p>
+
+<p>
+  <label for="catage">Cat age:</label>
+  <input id="catage" name="catage">
+</p>
+
+<p>
+  <label for="catowner">Cat owner:</label>
+  <input id="catowner" name="catowner">
+</p>
+
+<button type="submit">Submit</button>
+
+</form>

@@ -1,0 +1,15 @@
+<button id="snowshoe">Learn about snowshoe cats</button>
+<p>I don't know anything about snowshoe cats.</p>
+<script>
+  const learnButton = document.querySelector("#snowshoe");
+  learnButton.addEventListener("click", () => {
+    let xhttp = new XMLHttpRequest();
+    xhttp.onload = () => {
+      const para = document.querySelector("p");
+      para.innerText = xhttp.responseText;
+    }    
+    xhttp.open("GET", "/static/snowshoe.txt", true);
+    xhttp.send();
+
+  })
+</script>

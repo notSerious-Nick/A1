@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Secret Code Machine</title>
+  <style>
+    .hidden { display: none; }
+    .box { margin-top: 10px; padding: 10px; border: 1px solid #ccc; width: 300px; }
+  </style>
+</head>
+<body>
+
+  <h1>Secret Code Machine</h1>
+
+  <label>Enter secret code:</label>
+  <input id="code-input" type="text">
+  <button id="check-btn">Check Code</button>
+
+  <div id="result" class="box"></div>
+
+  <button id="hint-btn">Show Hint</button>
+  <p id="hint" class="hidden">Hint: It's a food that rhymes with "cow"</p>
+
+  <script>
+    document.getElementById("check-btn").addEventListener("click", () => {
+      const input = document.getElementById("code-input").value.toLowerCase();
+      const result = document.getElementById("result");
+
+      result.textContent = "Checking...";
+      
+      setTimeout(() => {
+        if (input === "bao") {
+          result.textContent = "Correct!";
+        } else {
+          result.textContent = "Incorrect!";
+        }
+      }, 1000);
+    });
+
+    document.getElementById("hint-btn").addEventListener("click", () => {
+      document.getElementById("hint").classList.remove("hidden");
+    });
+  </script>
+
+</body>
+</html>

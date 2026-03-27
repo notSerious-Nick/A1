@@ -1,0 +1,23 @@
+<!doctype html>
+<meta charset="utf8">
+
+<title>Owner Search</title>
+
+<h2>Search for an owner</h2>
+{% if error_string|length > 0 %}
+<output>{{ error_string }}</output>
+{% endif %}
+
+<form action="/cats/owner-name/" method="get">
+    <label for="ownername">Enter an owner name:</label>
+    <input type="text" id="ownername" name="ownername" value="{% if user.is_authenticated %}{{ user.username }}{% endif %}">
+    <button type="submit">Submit</button>
+</form>
+
+<h2>Add an owner</h2>
+<form action="/cats/add-owner/" method="post">
+    {% csrf_token %}
+    <label for="owner">Add an owner name:</label>
+    <input type="text" id="owner" name="ownername">
+    <button type="submit">Submit</button>
+</form>
