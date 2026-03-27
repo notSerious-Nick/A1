@@ -75,10 +75,8 @@ async function loadOrders() {
     });
     filterCards();
   } catch (error) {
-    let fetchedOrders = document.querySelector("#fetched-orders");
-    let fetchError = document.querySelector("#fetch-error");
     fetchedOrders.textContent = "";
-    fetchError.textContent = "Cannot load orders";
+    fetchError.textContent = "Could not load orders.";
   }
 }
 
