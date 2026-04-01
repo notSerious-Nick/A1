@@ -108,20 +108,24 @@ def test_loaded_cards_participate_in_filtering():
         assert fetched_orders.inner_text().strip() != "", \
             "Clicking 'Load Orders' should place new content in the fetched orders area."
 
+        loaded_items = page.locator("#fetched-orders > *")
+        loaded_count = loaded_items.count()
+
+        assert loaded_count > 0, \
+            "Load Orders should add visible child elements inside '#fetched-orders'."
+
         page.locator("#filter-text").fill("zzzzzz")
         page.wait_for_timeout(200)
 
-        loaded_cards = page.locator("#fetched-orders .order-card")
-        loaded_count = loaded_cards.count()
+        visible_after_filter = page.locator("#fetched-orders > *:visible").count()
+        assert visible_after_filter == 0, \
+            "Newly loaded order content should also be hidden when the active filter matches none of it."
 
-        if loaded_count > 0:
-            assert page.locator("#fetched-orders .order-card:visible").count() == 0, \
-                "Loaded order cards should also be hidden when the active filter matches none of them."
+        page.locator("#filter-text").fill("")
+        page.wait_for_timeout(200)
 
-            page.locator("#filter-text").fill("")
-            page.wait_for_timeout(200)
-
-            assert page.locator("#fetched-orders .order-card:visible").count() == loaded_count, \
-                "Loaded order cards should become visible again after clearing the filter."
+        visible_after_clear = page.locator("#fetched-orders > *:visible").count()
+        assert visible_after_clear == loaded_count, \
+            "Loaded order content should become visible again after clearing the filter."
 
         browser.close()
