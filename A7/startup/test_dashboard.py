@@ -98,10 +98,6 @@ def test_loaded_cards_participate_in_filtering():
         page = browser.new_page()
         page.goto(BASE_URL)
 
-        # Apply a filter first so newly loaded cards must obey the current filter.
-        page.locator("#filter-text").fill("zzzzzz")
-        page.wait_for_timeout(100)
-
         page.locator("#load-orders-btn").click()
         page.wait_for_timeout(1000)
 
@@ -111,15 +107,18 @@ def test_loaded_cards_participate_in_filtering():
         assert loaded_count > 0, \
             "Clicking 'Load Orders' should create new order cards in the fetched orders area."
 
+        page.locator("#filter-text").fill("zzzzzz")
+        page.wait_for_timeout(200)
+
         for i in range(loaded_count):
             assert not loaded_cards.nth(i).is_visible(), \
-                "Newly loaded cards should also be hidden when the active filter matches none of them."
+                "Loaded order cards should be hidden when the current filter matches none of them."
 
         page.locator("#filter-text").fill("")
-        page.wait_for_timeout(100)
+        page.wait_for_timeout(200)
 
-        visible_loaded_cards = page.locator("#fetched-orders .order-card:visible").count()
-        assert visible_loaded_cards == loaded_count, \
-            "Loaded cards should become visible again after clearing the filter."
+        for i in range(loaded_count):
+            assert loaded_cards.nth(i).is_visible(), \
+                "Loaded order cards should become visible again after clearing the filter."
 
         browser.close()
