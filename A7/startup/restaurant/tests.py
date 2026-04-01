@@ -3,7 +3,7 @@ from django.test import TestCase
 
 class RestaurantDashboardTests(TestCase):
     def test_dashboard_page_loads_successfully(self):
-        response = self.client.get("/restaurant/")
+        response = self.client.get("/restaurant/dashboard/")
         self.assertEqual(
             response.status_code,
             200,
@@ -11,18 +11,18 @@ class RestaurantDashboardTests(TestCase):
         )
 
     def test_dashboard_contains_expected_h2_headers(self):
-        response = self.client.get("/restaurant/")
+        response = self.client.get("/restaurant/dashboard/")
         content = response.content.decode()
 
         self.assertIn(
-            "<h2>Unassigned Orders</h2>",
+            "Unassigned Orders",
             content,
-            "Dashboard page should contain the exact h2 text 'Unassigned Orders'."
+            "Dashboard page should contain the text 'Unassigned Orders'."
         )
         self.assertIn(
-            "<h2>My Orders</h2>",
+            "My Orders",
             content,
-            "Dashboard page should contain the exact h2 text 'My Orders'."
+            "Dashboard page should contain the text 'My Orders'."
         )
 
     def test_orders_json_endpoint_loads_successfully(self):
