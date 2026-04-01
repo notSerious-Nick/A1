@@ -15,14 +15,12 @@ class RestaurantDashboardTests(TestCase):
         response = self.client.get(reverse("restaurant_dashboard"))
         content = response.content.decode()
 
-        self.assertIn(
-            "Unassigned Orders",
-            content,
+        self.assertTrue(
+            "Unassigned Orders" in content,
             "Dashboard page should contain the text 'Unassigned Orders'."
         )
-        self.assertIn(
-            "My Orders",
-            content,
+        self.assertTrue(
+            "My Orders" in content,
             "Dashboard page should contain the text 'My Orders'."
         )
 
@@ -38,13 +36,11 @@ class RestaurantDashboardTests(TestCase):
         response = self.client.get(reverse("restaurant_orders_json"))
         data = response.json()
 
-        self.assertIn(
-            "orders",
-            data,
+        self.assertTrue(
+            "orders" in data,
             "Orders JSON response should contain an 'orders' field."
         )
-        self.assertIsInstance(
-            data["orders"],
-            list,
+        self.assertTrue(
+            isinstance(data["orders"], list),
             "The 'orders' field should be a list."
         )
