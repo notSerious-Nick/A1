@@ -91,7 +91,6 @@ def test_filter_hides_non_matching_cards_and_keeps_matching_cards():
 
         browser.close()
 
-
 def test_loaded_cards_participate_in_filtering():
     with sync_playwright() as p:
         browser = p.chromium.launch()
@@ -104,13 +103,13 @@ def test_loaded_cards_participate_in_filtering():
             "() => document.querySelector('#fetched-orders').innerText.trim() !== ''"
         )
 
-        fetched_orders = page.locator("#fetched-orders")
-        assert fetched_orders.inner_text().strip() != "", \
-            "Clicking 'Load Orders' should place new content in the fetched orders area."
-
         page.wait_for_function(
             "() => document.querySelector('#fetched-orders').innerText.trim() !== 'Loading'"
         )
+
+        fetched_orders = page.locator("#fetched-orders")
+        assert fetched_orders.inner_text().strip() != "", \
+            "Clicking 'Load Orders' should place new content in the fetched orders area."
 
         loaded_cards = page.locator("#fetched-orders .order-card")
         loaded_count = loaded_cards.count()
