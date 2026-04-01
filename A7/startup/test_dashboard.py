@@ -33,12 +33,12 @@ def test_notification_appears_and_disappears():
         page.wait_for_timeout(100)
 
         assert notification.inner_text().strip() != "", \
-            "Notification should contain text after clicking 'Simulate Order Alert'."
+            "Notification should contain text after clicking the simulate order button."
 
         page.wait_for_timeout(2500)
 
         assert notification.inner_text().strip() == "", \
-            "Notification should disappear after a short delay."
+            "Notification text should disappear after a short delay."
 
         browser.close()
 
@@ -82,7 +82,7 @@ def test_filter_hides_non_matching_cards_and_keeps_matching_cards():
             card = cards.nth(i)
             item_name = card.locator(".item-name").inner_text()
 
-            if "Bao" in item_name:
+            if item_name == "Bao":
                 assert card.is_visible(), \
                     "Matching order cards should remain visible after filtering."
             else:
@@ -109,13 +109,13 @@ def test_load_orders_adds_new_cards_and_filter_affects_them():
         assert before_text == "", \
             "Fetched orders area should start empty before loading orders."
         assert after_text != "", \
-            "Fetched orders area should contain loaded order cards after clicking 'Load Orders'."
+            "Fetched orders area should contain loaded orders after clicking 'Load Orders'."
 
         page.locator("#filter-text").fill("zzzzzz")
         page.wait_for_timeout(100)
 
         visible_cards = page.locator(".order-card:visible").count()
         assert visible_cards == 0, \
-            "All visible order cards should be hidden when the filter does not match any item."
+            "All order cards should be hidden when the filter text matches none of them."
 
         browser.close()
