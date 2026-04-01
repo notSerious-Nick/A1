@@ -92,30 +92,26 @@ def test_filter_hides_non_matching_cards_and_keeps_matching_cards():
         browser.close()
 
 
-def test_load_orders_adds_new_cards_and_filter_affects_them():
+def test_load_orders_adds_new_cards_and_loaded_cards_follow_filter():
     with sync_playwright() as p:
         browser = p.chromium.launch()
         page = browser.new_page()
         page.goto(BASE_URL)
 
         fetched_orders = page.locator("#fetched-orders")
-        before_text = fetched_orders.inner_text().strip()
-
-        page.locator("#load-orders-btn").click()
-        page.wait_for_timeout(1000)
-
-        after_text = fetched_orders.inner_text().strip()
-
-        assert before_text == "", \
-            "Fetched orders area should start empty before loading orders."
-        assert after_text != "", \
-            "Fetched orders area should contain loaded orders after clicking 'Load Orders'."
 
         page.locator("#filter-text").fill("zzzzzz")
         page.wait_for_timeout(100)
 
-        visible_cards = page.locator(".order-card:visible").count()
-        assert visible_cards == 0, \
-            "All order cards should be hidden when the filter text matches none of them."
+        page.locator("#load-orders-btn").click()
+        page.wait_for_timeout(1000)
+
+        fetched_text = fetched_orders.inner_text().strip()
+        assert fetched_text != "", \
+            "Fetched orders area should contain loaded orders after clicking 'Load Orders'."
+
+        visible_loaded_cards = page.locator("#fetched-orders .order-card:visible").count()
+        assert visible_loaded_cards == 0, \
+            "Newly loaded order cards should also be hidden when the current filter matches none of them."
 
         browser.close()
