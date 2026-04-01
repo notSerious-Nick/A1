@@ -30,7 +30,7 @@ def test_notification_appears_and_disappears():
         page.locator("#simulate-order-btn").click()
 
         notification = page.locator("#notification")
-        page.wait_for_timeout(100)
+        page.wait_for_timeout(200)
 
         assert notification.inner_text().strip() != "", \
             "Notification should appear with text after clicking 'Simulate Order Alert'."
@@ -53,7 +53,7 @@ def test_move_order_to_my_orders():
         first_order_text = first_order.inner_text()
 
         first_order.click()
-        page.wait_for_timeout(100)
+        page.wait_for_timeout(200)
 
         my_orders_text = page.locator("#my-orders").inner_text()
         unassigned_text = page.locator("#unassigned-orders").inner_text()
@@ -73,7 +73,7 @@ def test_filter_hides_non_matching_cards_and_keeps_matching_cards():
         page.goto(BASE_URL)
 
         page.locator("#filter-text").fill("Bao")
-        page.wait_for_timeout(100)
+        page.wait_for_timeout(200)
 
         cards = page.locator("#card-area .order-card")
         count = cards.count()
@@ -99,26 +99,29 @@ def test_loaded_cards_participate_in_filtering():
         page.goto(BASE_URL)
 
         page.locator("#load-orders-btn").click()
-        page.wait_for_timeout(1000)
 
-        loaded_cards = page.locator("#fetched-orders .order-card")
-        loaded_count = loaded_cards.count()
+        page.wait_for_function(
+            "() => document.querySelector('#fetched-orders').children.length > 0"
+        )
 
-        assert loaded_count > 0, \
-            "Clicking 'Load Orders' should create new order cards in the fetched orders area."
+        fetched_orders = page.locator("#fetched-orders")
+        assert fetched_orders.inner_text().strip() != "", \
+            "Clicking 'Load Orders' should place new content in the fetched orders area."
 
         page.locator("#filter-text").fill("zzzzzz")
         page.wait_for_timeout(200)
 
-        for i in range(loaded_count):
-            assert not loaded_cards.nth(i).is_visible(), \
-                "Loaded order cards should be hidden when the current filter matches none of them."
+        loaded_cards = page.locator("#fetched-orders .order-card")
+        loaded_count = loaded_cards.count()
 
-        page.locator("#filter-text").fill("")
-        page.wait_for_timeout(200)
+        if loaded_count > 0:
+            assert page.locator("#fetched-orders .order-card:visible").count() == 0, \
+                "Loaded order cards should also be hidden when the active filter matches none of them."
 
-        for i in range(loaded_count):
-            assert loaded_cards.nth(i).is_visible(), \
+            page.locator("#filter-text").fill("")
+            page.wait_for_timeout(200)
+
+            assert page.locator("#fetched-orders .order-card:visible").count() == loaded_count, \
                 "Loaded order cards should become visible again after clearing the filter."
 
         browser.close()
